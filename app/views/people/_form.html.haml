@@ -1,9 +1,10 @@
 = simple_form_for(@person) do |f|
   = f.error_notification
 
-  .form-inputs
-    = f.input :first_name
-    = f.input :last_name
+  .form-group
+    = f.input :first_name, input_html: {class: 'form-control'}
+  .form-group
+    = f.input :last_name, input_html: {class: 'form-control'}
 
-  .form-actions
-    = f.button :submit
+  .form-group
+    = f.button :submit, class: 'btn-primary'

@@ -1,9 +1,10 @@
 = simple_form_for(@phone_number) do |f|
   = f.error_notification
 
-  .form-inputs
-    = f.input :number
-    = f.input :person_id
+  .form-group
+    = f.input :number, input_html: {class: 'form-control'}
+  .form-group
+    = f.input :person_id, input_html: {class: 'form-control'}
 
-  .form-actions
-    = f.button :submit
+  .form-group
+    = f.button :submit, class: 'btn-primary'
