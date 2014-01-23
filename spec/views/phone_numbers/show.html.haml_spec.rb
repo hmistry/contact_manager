@@ -2,9 +2,15 @@ require 'spec_helper'
 
 describe "phone_numbers/show" do
   before(:each) do
+    @person = assign(:person, stub_model(Person,
+      first_name: "MyString",
+      last_name: "MyString",
+      id: 1
+    ))
     @phone_number = assign(:phone_number, stub_model(PhoneNumber,
-      :number => "Number",
-      :person_id => 1
+      :number => "MyString",
+      :person_id => @person.id,
+      :person => @person
     ))
   end
 
