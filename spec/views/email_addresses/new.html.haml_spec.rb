@@ -2,9 +2,15 @@ require 'spec_helper'
 
 describe "email_addresses/new" do
   before(:each) do
+    @person = assign(:person, stub_model(Person,
+      first_name: "MyString",
+      last_name: "MyString",
+      id: 1
+    ))
     assign(:email_address, stub_model(EmailAddress,
       :address => "MyString",
-      :person_id => 1
+      :person_id => 1,
+      person: @person
     ).as_new_record)
   end
 
