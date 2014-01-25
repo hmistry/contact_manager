@@ -9,8 +9,9 @@ describe "phone_numbers/show" do
     ))
     @phone_number = assign(:phone_number, stub_model(PhoneNumber,
       :number => "MyString",
-      :person_id => @person.id,
-      :person => @person
+      :contact_id => @person.id,
+      :contact_type => "Person",
+      :contact => @person
     ))
   end
 
