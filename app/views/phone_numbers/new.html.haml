@@ -4,4 +4,7 @@
 
 = link_to 'Back', phone_numbers_path
 \|
-= link_to 'Back to Person', person_path(@phone_number.contact)
+- if @phone_number.contact_type == "Person"
+  = link_to 'Back to Person', person_path(@phone_number.contact_id)
+- else
+  = link_to 'Back to Company', company_path(@phone_number.contact_id)

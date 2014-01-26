@@ -5,10 +5,13 @@
   = @email_address.address
 %p
   %b Person:
-  = @email_address.person_id
+  = @email_address.contact_id
 
 = link_to 'Edit', edit_email_address_path(@email_address)
 \|
 = link_to 'Back', email_addresses_path
 \|
-= link_to 'Back to Person', person_path(@email_address.person)
+- if @email_address.contact_type == "Person"
+  = link_to 'Back to Person', person_path(@email_address.contact_id)
+- else
+  = link_to 'Back to Company', company_path(@email_address.contact_id)

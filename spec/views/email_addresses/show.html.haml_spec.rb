@@ -9,7 +9,8 @@ describe "email_addresses/show" do
     ))
     @email_address = assign(:email_address, stub_model(EmailAddress,
       :address => "Address",
-      :person_id => 1,
+      :contact_id => 1,
+      :contact_type => "Person",
       person: @person
     ))
   end

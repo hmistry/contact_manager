@@ -6,4 +6,7 @@
 \|
 = link_to 'Back', email_addresses_path
 \|
-= link_to 'Back to Person', person_path(@email_address.person)
+- if @email_address.contact_type == "Person"
+  = link_to 'Back to Person', person_path(@email_address.contact_id)
+- else
+  = link_to 'Back to Company', company_path(@email_address.contact_id)

@@ -17,7 +17,12 @@ describe Company do
   end
 
   it "responds with its phone numbers after they're created" do
-    phone_number = company.phone_numbers.build(number: "333-4444")
-    expect(phone_number.number).to eq('333-4444')
+    company.phone_numbers.build(number: "333-4444")
+    expect(company.phone_numbers.map(&:number)).to eq(['333-4444'])
+  end
+
+  it "responds with its email addresses after they're created" do
+    company.email_addresses.build(address: "info@abc.com")
+    expect(company.email_addresses.map(&:address)).to eq(["info@abc.com"])
   end
 end
