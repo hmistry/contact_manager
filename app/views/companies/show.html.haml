@@ -4,23 +4,13 @@
   %b Name:
   = @company.name
 
-%ul
-  - @company.phone_numbers.each do |phone|
-    %li
-      = phone.number
-      = link_to 'edit', edit_phone_number_path(phone)
-      \|
-      = link_to 'delete', phone_number_path(phone), method: :delete
-  %li= link_to 'Add phone number', new_phone_number_path(contact_id: @company.id, contact_type: "Company")
+= render "phone_numbers/phone_numbers", phone_numbers: @company.phone_numbers
 
-%ul
-  - @company.email_addresses.each do |email|
-    %li
-      = email.address
-      = link_to 'edit', edit_email_address_path(email), id: "edit_email"
-      \|
-      = link_to 'delete', email_address_path(email), method: :delete, id: "delete_email"
-  %li= link_to 'Add email address', new_email_address_path(contact_id: @company.id, contact_type: "Company"), id: "new_email_address"
+%p= link_to 'Add phone number', new_phone_number_path(contact_id: @company.id, contact_type: "Company")
+
+= render "email_addresses/email_addresses", email_addresses: @company.email_addresses
+
+%p= link_to 'Add email address', new_email_address_path(contact_id: @company.id, contact_type: "Company"), id: "new_email_address"
 
 = link_to 'Edit', edit_company_path(@company)
 \|
