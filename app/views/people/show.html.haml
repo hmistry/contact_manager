@@ -1,20 +1,21 @@
+- content_for :title do
+  - "#{@person.first_name} #{@person.last_name}"
+
 %p#notice= notice
 
-%p
-  %b First name:
-  = @person.first_name
-%p
-  %b Last name:
-  = @person.last_name
+.person
+  %h2
+    = @person.first_name
+    = @person.last_name
 
-= render "phone_numbers/phone_numbers", phone_numbers: @person.phone_numbers
+  = render "phone_numbers/phone_numbers", phone_numbers: @person.phone_numbers
 
-%p= link_to 'Add phone number', new_phone_number_path(contact_id: @person.id, contact_type: "Person")
+  %p= link_to 'Add phone number', new_phone_number_path(contact_id: @person.id, contact_type: "Person")
 
-= render "email_addresses/email_addresses", email_addresses: @person.email_addresses
+  = render "email_addresses/email_addresses", email_addresses: @person.email_addresses
 
-%p= link_to 'Add email address', new_email_address_path(contact_id: @person.id, contact_type: "Person"), id: 'new_email_address'
+  %p= link_to 'Add email address', new_email_address_path(contact_id: @person.id, contact_type: "Person"), id: 'new_email_address'
 
-= link_to 'Edit', edit_person_path(@person)
-\|
-= link_to 'Back', people_path
+  = link_to 'Edit', edit_person_path(@person)
+  \|
+  = link_to 'Back', people_path
