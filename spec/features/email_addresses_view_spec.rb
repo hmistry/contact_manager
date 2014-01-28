@@ -6,10 +6,25 @@ describe 'the email addresses view', type: :feature do
   describe 'from Person view' do
     let(:person) { Person.create(first_name: 'Jane', last_name: 'Doe') }
 
+    before(:each) do
+      person.phone_numbers.create(number: "555-1234")
+      person.phone_numbers.create(number: "555-5678")
+      visit person_path(person)
+    end
+
     describe 'when looking at the new email address form' do
       before(:each) do
-        visit person_path(person)
         page.click_link('new_email_address')
+      end
+
+      it "shows the contact's name in the title" do
+        expect(page).to have_selector("h1", text: "#{person.last_name}, #{person.first_name}")
+      end
+    end
+
+    describe 'when looking at the edit email address form' do
+      before(:each) do
+        page.first(:link, 'edit').click
       end
 
       it "shows the contact's name in the title" do
@@ -21,10 +36,25 @@ describe 'the email addresses view', type: :feature do
   describe 'from Company view' do
     let(:company) { Company.create(name: 'Acme') }
 
+    before(:each) do
+      company.phone_numbers.create(number: "555-1234")
+      company.phone_numbers.create(number: "555-5678")
+      visit company_path(company)
+    end
+
     describe 'when looking at the new email address form' do
       before(:each) do
-        visit company_path(company)
         page.click_link('new_email_address')
+      end
+
+      it "shows the contact's name in the title" do
+        expect(page).to have_selector("h1", text: "#{company.name}")
+      end
+    end
+
+    describe 'when looking at the edit email address form' do
+      before(:each) do
+        page.first(:link, 'edit').click
       end
 
       it "shows the contact's name in the title" do
