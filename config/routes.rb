@@ -1,4 +1,6 @@
 ContactManager::Application.routes.draw do
+  root to: 'site#index'
+
   resources :companies
 
   resources :email_addresses, except: [:show, :index]
@@ -6,6 +8,11 @@ ContactManager::Application.routes.draw do
   resources :phone_numbers, except: [:show, :index]
 
   resources :people
+
+  get "/login" => redirect("/auth/twitter"), as: :login
+  get "/auth/twitter/callback" => 'sessions#create'
+  delete "/logout" => "sessions#destroy", as: :logout
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

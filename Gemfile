@@ -57,6 +57,8 @@ gem 'simple_form'
 # gem 'devise'
 # gem 'cancan'
 # gem 'rolify'
+gem 'omniauth'
+gem 'omniauth-twitter'
 
 # Store keys/passwords in yaml file
 # gem 'figaro'
