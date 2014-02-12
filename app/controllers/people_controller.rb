@@ -4,7 +4,7 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
-    @people = Person.all
+    @people = current_user.people
   end
 
   # GET /people/1
@@ -64,11 +64,11 @@ class PeopleController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_person
-      @person = Person.find(params[:id])
+      @person = current_user.people.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def person_params
-      params.require(:person).permit(:first_name, :last_name)
+      params.require(:person).permit(:first_name, :last_name, :user_id)
     end
 end

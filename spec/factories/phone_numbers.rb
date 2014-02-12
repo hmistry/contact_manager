@@ -2,7 +2,8 @@
 
 FactoryGirl.define do
   factory :phone_number do
-    number "MyString"
-    person_id 1
+    number "555-123-6789"
+    contact_id 1
+    contact_type "person"
   end
 end

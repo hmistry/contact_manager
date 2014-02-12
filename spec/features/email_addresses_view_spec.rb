@@ -4,11 +4,13 @@ require 'capybara/rspec'
 
 describe 'the email addresses view', type: :feature do
   describe 'from Person view' do
-    let(:person) { Person.create(first_name: 'Jane', last_name: 'Doe') }
+    let(:person) { FactoryGirl.create(:person) }
+    let(:user) { person.user }
 
     before(:each) do
-      person.phone_numbers.create(number: "555-1234")
-      person.phone_numbers.create(number: "555-5678")
+      person.email_addresses.create(address: "info@acme.com")
+      person.email_addresses.create(address: "sale@acme.com")
+      login_as(user)
       visit person_path(person)
     end
 
@@ -34,11 +36,13 @@ describe 'the email addresses view', type: :feature do
   end
 
   describe 'from Company view' do
-    let(:company) { Company.create(name: 'Acme') }
+    let(:company) { FactoryGirl.create(:company) }
+    let(:user) { company.user }
 
     before(:each) do
-      company.phone_numbers.create(number: "555-1234")
-      company.phone_numbers.create(number: "555-5678")
+      company.email_addresses.create(address: "info@acme.com")
+      company.email_addresses.create(address: "sale@acme.com")
+      login_as(user)
       visit company_path(company)
     end
 

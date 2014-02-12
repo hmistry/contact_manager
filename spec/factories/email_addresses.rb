@@ -3,6 +3,7 @@
 FactoryGirl.define do
   factory :email_address do
     address "MyString"
-    person_id 1
+    contact_id 1
+    contact_type "person"
   end
 end

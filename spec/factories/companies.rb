@@ -2,6 +2,7 @@
 
 FactoryGirl.define do
   factory :company do
-    name "MyString"
+    name "Acme Corp"
+    user
   end
 end

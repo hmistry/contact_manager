@@ -1,9 +1,7 @@
 require 'spec_helper'
 
 describe Person do
-  let(:person) do
-    Person.new(first_name: 'Alice', last_name: 'Smith')
-  end
+  let(:person) { FactoryGirl.create(:person)}
 
   it 'is valid' do
     expect(person).to be_valid
@@ -31,5 +29,9 @@ describe Person do
 
   it "converts to string with Last Name, First Name" do
     expect(person.to_s).to eq("Smith, Alice")
+  end
+
+  it 'is a child of the user' do
+    expect(person.user).to be_instance_of(User)
   end
 end
